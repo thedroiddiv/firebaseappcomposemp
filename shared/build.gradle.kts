@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.kotlinMultiplatform)
     alias(libs.plugins.androidLibrary)
     alias(libs.plugins.composeJetbrains)
+    kotlin("plugin.serialization") version "1.9.0"
 }
 
 kotlin {
@@ -32,6 +33,13 @@ kotlin {
             implementation(compose.materialIconsExtended)
             @OptIn(org.jetbrains.compose.ExperimentalComposeLibrary::class)
             implementation(compose.components.resources)
+
+            // KMP Firebase
+            implementation(libs.gitlive.firebase.firestore)
+            implementation(libs.gitlive.firebase.common)
+
+            // Serialization
+            implementation(libs.kotlinx.serialization.json)
         }
         commonTest.dependencies {
             implementation(libs.kotlin.test)
